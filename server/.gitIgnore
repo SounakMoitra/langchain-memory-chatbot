@@ -1,0 +1,72 @@
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+
+report.[0-9]*.json
+
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+*.lcov
+
+
+dist
+build
+.out
+.next
+.cache
+.temp
+.tmp
+
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+*.tsbuildinfo
+
+# Data/temp
+data/
+tmp/
+temp/
+
+# Local databases
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+
+# Tooling caches and outputs
+.nyc_output/
+.parcel-cache/
+.turbo/
+.serverless/
+.vercel/
+.netlify/
+
+# Docker/local env
+.docker/
+docker-data/
+*.local.yml
+
+# Misc
+.eslintcache
