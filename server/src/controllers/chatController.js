@@ -7,6 +7,7 @@ const prompt = ChatPromptTemplate.fromMessages([
   ["assistant", "Context:\n {context}"],
   ["human", "{input}"]
 ]);
+
 const chain = prompt.pipe(model);
 
 export const chatHandler = async (req, res) => {
@@ -27,6 +28,7 @@ export const chatHandler = async (req, res) => {
       }
     });
 
+
     const response = await chain.invoke({ input: message, context: finalContext });
     if (!response || !response.content) {
       throw new Error("No response from Gemini.");
@@ -36,6 +38,7 @@ export const chatHandler = async (req, res) => {
     await store.addDocuments([
       { pageContent: `${message} ${response.content}` }
     ]);
+    
     res.send({ data: response.content });
   } catch (err) {
     console.error("Chat Error:", err);
