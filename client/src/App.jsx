@@ -97,33 +97,28 @@ const App = () => {
   };
   
   
-  const generateResponse = async (conversation, botMessageId) => {
-    const formattedMessages = conversation.messages?.map((msg) => ({
-      role: msg.role === "bot" ? "model" : msg.role,
-      parts: [{ text: msg.content }],
-    }));
+  const generateResponse = async (userMessage, botMessageId) => {
     try {
       const res = await fetch(import.meta.env.VITE_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contents: formattedMessages }),
+        body: JSON.stringify({ message: userMessage }),
       });
   
       const data = await res.json();
   
-      if (!res.ok) throw new Error(data.error.message);
+      if (!res.ok) throw new Error(data.error?.message || "No response from backend");
   
-      const responseText = data.data.trim();
-  
+      const responseText = data.data?.trim() || "No response from backend.";
       typingEffect(responseText, botMessageId);
-  
     } catch (error) {
       setIsLoading(false);
       updateBotMessage(botMessageId, error.message, true);
     }
-  
-  
   };
+  
+
+
   const updateBotMessage = (botId, content, isError = false) => {
     setConversations((prev) =>
       prev.map((conv) =>
@@ -189,5 +184,7 @@ const App = () => {
     </div>
   );
 };
+
+
 export default App;
 

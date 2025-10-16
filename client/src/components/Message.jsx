@@ -5,5 +5,6 @@ const Message = ({ message }) => (
       <p className="text">{message.content}</p>
     </div>
   );
+  
   export default Message;
   

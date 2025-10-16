@@ -45,7 +45,9 @@ const PromptForm = ({
         conv.id === activeConversation
           ? { ...conv, title: newTitle, messages: [...conv.messages, botMessage] }
           : conv));
-      generateResponse({ ...currentConvo, messages: [...currentConvo.messages, userMessage] }, botMessageId);
+          
+          
+          generateResponse(promptText, botMessageId);
     }, 300);
   };
   
@@ -61,4 +63,6 @@ const PromptForm = ({
     </form>
   );
 };
+
+
 export default PromptForm;
