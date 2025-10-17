@@ -39,7 +39,7 @@ const PromptForm = ({
     
     setTimeout(() => {
       const botMessageId = `bot-${Date.now()}`;
-      const botMessage = { id: botMessageId, role: "bot", content: "Just a sec...", loading: true };
+      const botMessage = { id: botMessageId, role: "bot", content: "generating response...", loading: true };
       
       setConversations((prev) => prev.map((conv) =>
         conv.id === activeConversation
