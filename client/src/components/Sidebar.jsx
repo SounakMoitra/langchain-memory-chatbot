@@ -7,30 +7,44 @@ const Sidebar = ({
   activeConversation, setActiveConversation,
   theme, setTheme
 }) => {
+  
   const createNewConversation = () => {
     const emptyConversation = conversations.find((conv) => conv.messages.length === 0);
+    
     if (emptyConversation) {
       setActiveConversation(emptyConversation.id);
       return;
     }
+    
     const newId = `conv-${Date.now()}`;
+    
     setConversations([{ id: newId, title: "New Chat", messages: [] }, ...conversations]);
     setActiveConversation(newId);
   };
+  
+  
   const deleteConversation = (id, e) => {
     e.stopPropagation();
+    
     if (conversations.length === 1) {
       const newConversation = { id: "default", title: "New Chat", messages: [] };
+      
       setConversations([newConversation]);
       setActiveConversation("default");
     } else {
+      
       const updatedConversations = conversations.filter((conv) => conv.id !== id);
+      
       setConversations(updatedConversations);
+      
       if (activeConversation === id) {
         setActiveConversation(updatedConversations[0].id);
       }
     }
   };
+
+
+
   return (
     <aside className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="sidebar-header">
