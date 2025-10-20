@@ -101,6 +101,7 @@
   }
   .new-chat-btn {
     font-size: 1.08rem;
+    color: var(--primary-text);
     padding: 0.72rem 1.15rem;
     margin-bottom: 10px;
     background: var(--input-bg);
