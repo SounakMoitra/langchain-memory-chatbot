@@ -7,6 +7,7 @@ const prompt = ChatPromptTemplate.fromMessages([
   ["assistant", "Context:\n {context}"],
   ["human", "{input}"]
 ]);
+
 const chain = prompt.pipe(model);
 
 export const chatHandler = async (req, res) => {
